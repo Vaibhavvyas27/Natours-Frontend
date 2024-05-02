@@ -1,0 +1,16 @@
+.leaflet-container{
+    height: 700px;
+}
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control{
+    position: relative;
+    bottom: -540px;
+}
+
+
+.Toastify__toast{
+    color: #000000 !important;
+    font-size: 14px;
+    padding: 20px 10px!important;
+    /* text-decoration: underline; */
+}
