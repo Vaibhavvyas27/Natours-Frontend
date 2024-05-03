@@ -65,7 +65,7 @@ const ProfileUpadete = () => {
           <input id="email" type="email" name='email' className="form__input" value={formData.email} onChange={changeHandler} required />
         </div>
         <div className="form__group form__photo-upload">
-          <img src={`${url}img/users/${currentUser.photo ? currentUser.photo : 'default.jpg'}`} alt={`Photo of ${currentUser.name}`} className="form__user-photo" />
+          <img src={currentUser.photo? currentUser.photo : '/img/users/default.jpg' } alt={`Photo of ${currentUser.name}`} className="form__user-photo" />
           <input type="file" className='form__upload' accept='image/*' name='photo' onChange={(e)=> setImg(e.target.files[0])} ref={fileRef} hidden/>
           <label type='button' className="btn-text" style={{fontSize:'1.6rem'}} onClick={()=>fileRef.current.click()}>Choose new photo</label>
         </div>

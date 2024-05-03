@@ -45,7 +45,7 @@ function Header() {
           <>
             <span onClick={handleLogout} href="/" className="nav__el nav__el--logout">Log out</span>
             <Link to="/profile" className="nav__el">
-              <img src={`${url}img/users/${currentUser.photo ? currentUser.photo : 'default.jpg' }`} alt={`Photo of ${currentUser.name}`} className="nav__user-img" />
+              <img src={currentUser.photo? currentUser.photo : '/img/users/default.jpg' } alt={`Photo of ${currentUser.name}`} className="nav__user-img" />
               <span>{currentUser.name.split(' ')[0]}</span>
             </Link>
           </>
