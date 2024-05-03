@@ -131,7 +131,7 @@ const SingleTour = () => {
                             {
                                 tour?.guides?.map((user) => (
                                     <div key={user._id} className="overview-box__detail">
-                                        <img src={"/img/users/" + user.photo} alt="Lead guide" className="overview-box__img" />
+                                        <img src={user.photo} alt="Lead guide" className="overview-box__img" />
                                         <span className="overview-box__label">{user.role}</span>
                                         <span className="overview-box__text">{user.name}</span>
                                     </div>

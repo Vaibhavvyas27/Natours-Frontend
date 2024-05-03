@@ -5,7 +5,7 @@ const Reviews = ({review}) => {
     
     <div className="reviews__card">
       <div className="reviews__avatar">
-        <img className="reviews__avatar-img" src={"/img/users/"+review.user.photo} alt="Jim Brown" />
+        <img className="reviews__avatar-img" src={review.user.photo} alt="Jim Brown" />
         <h6 className="reviews__user">{review.user.name}</h6>
       </div>
       <p className="reviews__text">{review.review}</p>
