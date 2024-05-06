@@ -9,7 +9,8 @@ const ProfileUpadete = () => {
   const url = import.meta.env.VITE_APIURL
   const { currentUser } = useSelector(state => state.user)
   const fileRef = useRef(null)
-  const [img, setImg] = useState(null) 
+  const [img, setImg] = useState(null)  
+  const [loading, setLoading] = useState(false)  
   const dispatch = useDispatch()
   const [formData, setFormData] = useState({
     email: currentUser.email,
@@ -25,6 +26,7 @@ const ProfileUpadete = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     const NewformData = new FormData();
     NewformData.append('file', img); 
     NewformData.append('name', formData.name); 
@@ -49,6 +51,7 @@ const ProfileUpadete = () => {
     } catch (error) {
       console.log("Error", error)
     }
+    setLoading(false)
 
   }
   
@@ -70,7 +73,7 @@ const ProfileUpadete = () => {
           <label type='button' className="btn-text" style={{fontSize:'1.6rem'}} onClick={()=>fileRef.current.click()}>Choose new photo</label>
         </div>
         <div className="form__group right">
-          <button type='submit' className="btn btn--small btn--green">Save settings</button>
+          <button type='submit' className="btn btn--small btn--green">{loading ? 'Saveing...' : 'Save settings'}</button>
         </div>
       </form>
     </div>

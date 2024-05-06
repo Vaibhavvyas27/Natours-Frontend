@@ -9,7 +9,7 @@ import { signInFailure, signInStart, signInSuccess } from '../../redux/user/user
 const url = import.meta.env.VITE_APIURL
 function SignUp() {
   const navigate = useNavigate()
-  const { currentUser } = useSelector(state => state.user)
+  const { currentUser, loading } = useSelector(state => state.user)
   const dispatch = useDispatch()
   const [formData, setFormData] = useState({
     email: '',
@@ -18,7 +18,7 @@ function SignUp() {
     passwordConfirm: ''
   });
   const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(null)
+  // const [loading, setLoading] = useState(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target;

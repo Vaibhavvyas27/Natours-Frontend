@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 
 const PasswordChange = () => {
   const url = import.meta.env.VITE_APIURL
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     currentPassword: '',
     password: '',
@@ -20,6 +21,7 @@ const PasswordChange = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    setLoading(true)
     try {
       const res = await fetch(`${url}api/v1/users/update-password`, {
         method: 'PATCH',
@@ -44,6 +46,7 @@ const PasswordChange = () => {
     } catch (error) {
       console.log("Error",error)
     }
+    setLoading(false)
   }
   
   return (
@@ -64,7 +67,7 @@ const PasswordChange = () => {
                 <input id="password-confirm" type="password" name='passwordConfirm' value={formData.passwordConfirm} className="form__input" placeholder="••••••••" onChange={changeHandler} required minLength="8" />
               </div>
               <div className="form__group right">
-                <button className="btn btn--small btn--green">Save password</button>
+                <button className="btn btn--small btn--green">{loading ? 'Saveing...' : 'Save settings'}</button>
               </div>
             </form>
           </div>
