@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Booking = ({tour}) => {
-    // const cook = document.cookie
-    // console.log(cook)
     const url = import.meta.env.VITE_APIURL
     const { currentUser } = useSelector(state => state.user)
     const makePayment = async()=>{
