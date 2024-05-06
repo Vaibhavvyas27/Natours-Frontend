@@ -137,7 +137,6 @@ const SingleTour = () => {
                                     </div>
                                 ))
                             }
-
                         </div>
                     </div>
                 </div>
