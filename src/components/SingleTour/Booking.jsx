@@ -2,14 +2,13 @@ import { loadStripe } from '@stripe/stripe-js'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Booking = ({tour}) => {
     const url = import.meta.env.VITE_APIURL
     const { currentUser } = useSelector(state => state.user)
     const makePayment = async()=>{
         const stripe = await loadStripe('pk_test_51PAqoXSE2lbzOvfue7M5ZEPojW02I3IpdLtagt1avdmldNOmK9Yh1MPo08eIp0wDU0BxeaXeb0R2jqozOUI8RR3o00pWnYwjpM')
-        console.log('done')
-
         const responce = await fetch(`${url}api/v1/bookings/checkout-session/${tour?._id}`,{
             method: 'GET',
             headers: {
@@ -18,12 +17,15 @@ const Booking = ({tour}) => {
             credentials: 'include',
         })
 
-        const { session } = await responce.json()
+        const res = await responce.json()
 
-        console.log(session)
+        console.log(res)
+        if(!responce.ok){
+            toast.error(res.message)
+        }
 
         const result = stripe.redirectToCheckout({
-            sessionId : session.id
+            sessionId : res.session.id
         })
     }
     return (

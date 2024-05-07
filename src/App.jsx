@@ -16,7 +16,9 @@ import './App.css'
 import ForgetPass from './components/Auth/ForgetPass'
 import Success from './components/SingleTour/Success'
 import MyBookings from './components/MyBookings'
-// require('dotenv').config()
+import Wishlist from './components/Wishlist'
+
+
 function App() {
   return (
     <>
@@ -33,6 +35,7 @@ function App() {
               <Route path='/profile' element={<Profile />} />
               <Route path='/tour/success' element={<Success />} />
               <Route path='/my-bookings' element={<MyBookings />} />
+              <Route path='/wishlist' element={<Wishlist />} />
             {/* </Route> */}
           </Route>
         </Routes>

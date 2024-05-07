@@ -7,8 +7,9 @@ import TourCard from './TourCard';
 
 const url = import.meta.env.VITE_APIURL
 function Home() {
-  console.log(url)
   const [tours, setTours] = useState(null)
+  const [wishlist, setWishlist] = useState(null)
+  const [wishflag, setWishFlag] = useState(false)
   const fetchTour = async () => {
     try {
       const res = await fetch(`${url}api/v1/tours`, {
@@ -23,16 +24,34 @@ function Home() {
     }
   }
 
+  const getWishlist = async () => {
+    try {
+      const res = await fetch(`${url}api/v1/tours//get-wishlist`, {
+        method: 'GET',
+        credentials: 'include',
+      })
+
+      const { data } = await res.json()
+      setWishlist(data.wishlist)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     fetchTour()
+    
   }, [])
+  useEffect(() => {
+    getWishlist()
+  }, [wishflag])
 
   return (
     <main className="main">
       <div className="card-container">
         {
           tours?.map((tour) => (
-            <TourCard tour={tour} key={tour._id} />
+            <TourCard tour={tour} wishlist={wishlist} flag={wishflag} setFlag={setWishFlag} key={tour._id} />
           ))
 
           ||
