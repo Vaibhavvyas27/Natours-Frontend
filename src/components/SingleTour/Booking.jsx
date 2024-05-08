@@ -3,10 +3,39 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import ReviewModel from './ReviewModel'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const Booking = ({tour}) => {
     const url = import.meta.env.VITE_APIURL
     const { currentUser } = useSelector(state => state.user)
+    const [bookings, setBookings] = useState(null)
+
+    const fetchBooking = async () => {
+        try {
+            const res = await fetch(`${url}api/v1/bookings/tours/${tour?._id}`, {
+                method: 'GET',
+                credentials: 'include',
+            })
+
+            const { booking } = await res.json()
+            console.log(booking)
+            setBookings(booking)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(()=>{
+        if (tour != null) {
+            fetchBooking()
+        }
+    },[tour])
+
+
     const makePayment = async()=>{
         const stripe = await loadStripe('pk_test_51PAqoXSE2lbzOvfue7M5ZEPojW02I3IpdLtagt1avdmldNOmK9Yh1MPo08eIp0wDU0BxeaXeb0R2jqozOUI8RR3o00pWnYwjpM')
         const responce = await fetch(`${url}api/v1/bookings/checkout-session/${tour?._id}`,{
@@ -41,7 +70,13 @@ const Booking = ({tour}) => {
                     <p className="cta__text">{tour?.duration} days. 1 adventure. Infinite memories. Make it yours today!</p>
                     {
                         currentUser ? (
-                            <button className="btn btn--green span-all-rows" onClick={makePayment}>Book tour now!</button>
+
+                            bookings?.length == 0 ? ( 
+                                <button className="btn btn--green span-all-rows" onClick={makePayment}>Book tour now!</button>
+                            ) : (
+                                <ReviewModel tour={tour}/>
+                            )
+
                         ) : (
                             <Link to={'/login'} className="btn btn--green span-all-rows">Log in to Book Tour !!</Link>
                         )

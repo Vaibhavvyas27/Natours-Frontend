@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import Booking from './Booking'
 import Map from './Map'
 import ReviewCard from './ReviewCard'
+import ReviewModel from './ReviewModel'
 
 const SingleTour = () => {
     const url = import.meta.env.VITE_APIURL

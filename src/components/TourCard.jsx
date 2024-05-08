@@ -58,7 +58,7 @@ const TourCard = ({ tour, wishlist, setFlag, flag }) => {
             />
           </div>
 
-          <h3 className="heading-tertirary">
+          <h3 className="heading-tertirary" style={{lineHeight:'1.6'}}>
             <span>{tour.name}</span>
           </h3>
           {wishlist? <h1 className='bookmark'>{wishlist.some(t => t._id === tour._id) ?<MdBookmarkAdded onClick={removeFromWishlist} /> : <CiBookmark onClick={addToWishlist} /> }</h1> : ''}
