@@ -22,7 +22,7 @@ const Map = ({ locations }) => {
                   <p>{place.coordinates}</p>
                   <Marker icon={customIcon} position={i==0 ? place.coordinates : place.coordinates.reverse() } >
                   <Popup>
-                    <h1 ><i><u>Day : {place.day}</u></i></h1>
+                    <h4 className='text-small'><i><u>Day : {place.day}</u></i></h4>
                     <br />
                     <h2 className='custom_map_popup_text'>{place.description}</h2>
                   </Popup>

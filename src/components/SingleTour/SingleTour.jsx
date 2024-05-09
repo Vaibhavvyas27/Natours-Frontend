@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import Booking from './Booking'
 import Map from './Map'
 import ReviewCard from './ReviewCard'
+import ReviewModel from './ReviewModel'
 
 const SingleTour = () => {
     const url = import.meta.env.VITE_APIURL
@@ -71,7 +72,7 @@ const SingleTour = () => {
                 </div>
 
                 <div className="heading-box">
-                    <h1 className="heading-primary">
+                    <h1 className="heading-primary" style={{lineHeight:'1.6'}}>
                         <span>{tour?.name} Tour</span>
                     </h1>
                     <div className="heading-box__group">

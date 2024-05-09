@@ -1,12 +1,50 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { CiBookmark } from "react-icons/ci";
+import { MdBookmarkAdded } from "react-icons/md";
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
-const TourCard = ({tour}) => {
+const TourCard = ({ tour, wishlist, setFlag, flag }) => {
     const url = import.meta.env.VITE_APIURL
     const dateObject = new Date(tour.startDates[0]);
     const month = dateObject.toLocaleString('default', { month: 'long' });
     const year = dateObject.getFullYear();
     const formattedDate = `${month} ${year}`;
+
+    const addToWishlist = async() => {
+      try {
+        const res = await fetch(`${url}api/v1/tours/save-to-wishlist/${tour._id}`, {
+          method: 'GET',
+          credentials: 'include',
+        })
+  
+        const responce = await res.json()
+        if(res.ok){
+          toast.success(responce.message)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+      {flag? setFlag(false) : setFlag(true)}
+    }
+
+    const removeFromWishlist = async() => {
+      try {
+        const res = await fetch(`${url}api/v1/tours/remove-from-wishlist/${tour._id}`, {
+          method: 'GET',
+          credentials: 'include',
+        })
+  
+        const responce = await res.json()
+        if(res.ok){
+          toast.success(responce.message)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+      {flag? setFlag(false) : setFlag(true)}
+    }
   return (
     <div>
       <div className="card">
@@ -20,10 +58,12 @@ const TourCard = ({tour}) => {
             />
           </div>
 
-          <h3 className="heading-tertirary">
+          <h3 className="heading-tertirary" style={{lineHeight:'1.6'}}>
             <span>{tour.name}</span>
           </h3>
+          {wishlist? <h1 className='bookmark'>{wishlist.some(t => t._id === tour._id) ?<MdBookmarkAdded onClick={removeFromWishlist} /> : <CiBookmark onClick={addToWishlist} /> }</h1> : ''}
         </div>
+        
 
         <div className="card__details">
           <h4 className="card__sub-heading">{tour.difficulty} {tour.duration}-day tour</h4>

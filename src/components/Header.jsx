@@ -31,7 +31,10 @@ function Header() {
       <nav className="nav nav--tours">
         <NavLink  to="/" className="nav__el">All tours</NavLink>
         {currentUser?
-          <NavLink  to="/my-bookings" className="nav__el">My Bookings</NavLink>
+          <>
+            <NavLink  to="/my-bookings" className="nav__el">My Bookings</NavLink>
+            <NavLink  to="/wishlist" className="nav__el">Wishlist</NavLink>
+          </>
           :
           ""
         }

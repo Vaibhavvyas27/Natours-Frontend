@@ -23,6 +23,7 @@ const MyBookings = () => {
     useEffect(() => {
         fetchTour()
     }, [])
+    console.log(tours)
     return (
         <main className='main' style={{textAlign: 'center'}}>
             

@@ -28,10 +28,10 @@ html {
 }
 
 body {
-  line-height: 1.6;
+  line-height: 1.6 !important;
   font-weight: 300;
   font-family: 'Lato', sans-serif;
-  color: #777;
+  color: #777 !important;
   padding: 3rem;
   min-height: 100vh;
   display: -webkit-box;
@@ -231,8 +231,8 @@ body {
 }
 
 .btn--green {
-  background-color: #55c57a;
-  color: #fff;
+  background-color: #55c57a !important;
+  color: #fff !important;
 }
 .btn--green::after {
   background-color: #55c57a;
@@ -1087,6 +1087,7 @@ body {
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
   background-color: #fff;
   -webkit-transition: 0.3s all;
+  color: #777;
   transition: 0.3s all;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -1347,3 +1348,19 @@ body {
   border-bottom:0.2px solid #55c57a;
   color: #55c57a;
 }  
+
+
+.bookmark{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  color: black;
+  background-color: #e0e0e056;
+  border-radius: 50%;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
