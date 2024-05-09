@@ -52,7 +52,7 @@ function ReviewModel({tour}) {
     return (
         <>
             <button className="btn btn--green span-all-rows" onClick={handleShow}>
-                Write Review
+                Write Review !
             </button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

@@ -40,12 +40,11 @@ function Home() {
 
   useEffect(() => {
     fetchTour()
-    
   }, [])
   useEffect(() => {
     getWishlist()
   }, [wishflag])
-
+  
   return (
     <main className="main">
       <div className="card-container">

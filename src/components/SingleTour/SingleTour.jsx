@@ -72,7 +72,7 @@ const SingleTour = () => {
                 </div>
 
                 <div className="heading-box">
-                    <h1 className="heading-primary">
+                    <h1 className="heading-primary" style={{lineHeight:'1.6'}}>
                         <span>{tour?.name} Tour</span>
                     </h1>
                     <div className="heading-box__group">

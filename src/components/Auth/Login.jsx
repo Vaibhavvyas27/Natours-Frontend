@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { signInFailure, signInStart, signInSuccess } from '../../redux/user/userSlice';
+import { GrGoogle } from "react-icons/gr";
 
 
 const url = import.meta.env.VITE_APIURL
@@ -96,8 +97,9 @@ const Login = () => {
               minLength="8"
             />
           </div>
-          <div className="form__group">
+          <div className="form__group d-flex gap-3">
             <button disabled={loading} className="btn btn--green">{loading ? 'Loading...' : 'Login'}</button>
+            <button disabled={loading} className="btn btn--green">Google</button>
           </div>
           <h2 className='text'>Forget Password? <Link to={'/forget-password'}> click here  </Link></h2>
         </form>
