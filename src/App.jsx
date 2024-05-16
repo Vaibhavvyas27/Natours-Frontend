@@ -17,6 +17,7 @@ import ForgetPass from './components/Auth/ForgetPass'
 import Success from './components/SingleTour/Success'
 import MyBookings from './components/MyBookings'
 import Wishlist from './components/Wishlist'
+import Page404 from './components/404Page'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path='/wishlist' element={<Wishlist />} />
             {/* </Route> */}
           </Route>
+          <Route path='*' element={<Page404 />} />
         </Routes>
         <Footer />
       </BrowserRouter>
