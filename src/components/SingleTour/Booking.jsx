@@ -8,13 +8,13 @@ import Modal from 'react-bootstrap/Modal';
 import ReviewModel from './ReviewModel'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, PinterestIcon, PinterestShareButton, RedditIcon, RedditShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
+import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, PinterestIcon, PinterestShareButton, RedditIcon, RedditShareButton, TelegramIcon, TelegramShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
 
 const Booking = ({ tour }) => {
     const url = import.meta.env.VITE_APIURL
     const { currentUser } = useSelector(state => state.user)
     const [bookings, setBookings] = useState(null)
-    const shareUrl = "http://localhost:5173/"
+    const shareUrl = window.location.href
     const fetchBooking = async () => {
         try {
             const res = await fetch(`${url}api/v1/bookings/tours/${tour?._id}`, {
@@ -88,7 +88,7 @@ const Booking = ({ tour }) => {
             {
                 bookings?.length != 0 ? (
                     <div className="cta mt-5 d-flex px-5 py-5 flex-column align-items-center justify-content-center">
-                        <h2 className="heading-secondary">Share with others :</h2>
+                        <h2 className="heading-secondary">Share with others !</h2>
                         <div className='d-flex gap-3 mt-3'>
                             <WhatsappShareButton url={shareUrl}>
                                 <WhatsappIcon size={32} round={true} />
@@ -102,6 +102,9 @@ const Booking = ({ tour }) => {
                             <RedditShareButton url={shareUrl}>
                                 <RedditIcon size={32} round={true} />
                             </RedditShareButton>
+                            <TelegramShareButton url={shareUrl}>
+                                <TelegramIcon size={32} round={true} />
+                            </TelegramShareButton>
                         </div>
                     </div>
                 ) : (
