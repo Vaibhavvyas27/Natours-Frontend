@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Page404 = () => {
   return (
     <>
-      <main className="main">
+      <main className="main pb-5">
         <div className='' style={{textAlign: 'center'}}>
           <img height='200' src="/img/404-new-natours.png" alt="" />
           <h1 className='heading-secondary d-block mt-3'>Page Not Found !!</h1>
