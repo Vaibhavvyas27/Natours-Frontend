@@ -18,6 +18,7 @@ import Success from './components/SingleTour/Success'
 import MyBookings from './components/MyBookings'
 import Wishlist from './components/Wishlist'
 import Page404 from './components/404Page'
+import MyReviews from './components/myReviews/MyReviews'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path='/tour/:slug' element={<SingleTour />} />
             {/* <Route element={<PrivateRoute />}> */}
               <Route path='/profile' element={<Profile />} />
+              <Route path='/my-reviews' element={<MyReviews />} />
               <Route path='/tour/success' element={<Success />} />
               <Route path='/my-bookings' element={<MyBookings />} />
               <Route path='/wishlist' element={<Wishlist />} />

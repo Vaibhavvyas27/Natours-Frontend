@@ -7,7 +7,7 @@ function Profile() {
   return (
     <main className="main">
       <div className="user-view">
-        <ProfileSidebar />
+        <ProfileSidebar tab='setting'/>
         <div className="user-view__content">
           <AccountSetting />
           <div className="line">&nbsp;</div>

@@ -1,40 +1,42 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ProfileSidebar = () => {
+const ProfileSidebar = ({tab}) => {
+  console.log(tab)
   return (
     <nav className="user-view__menu">
           <ul className="side-nav">
-            <li className="side-nav--active">
-              <a href="#">
+            <li className={tab=='setting'? "side-nav--active" : ""}>
+              <Link to="/profile">
                 <svg>
                   <use xlinkHref="img/icons.svg#icon-settings"></use>
                 </svg>
                 Settings
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="/my-bookings">
                 <svg>
                   <use xlinkHref="img/icons.svg#icon-briefcase"></use>
                 </svg>
                 My bookings
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="#">
+            <li className={tab=='reviews' ? "side-nav--active" : "" }>
+              <Link to="/my-reviews">
                 <svg>
                   <use xlinkHref="img/icons.svg#icon-star"></use>
                 </svg>
                 My reviews
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="/">
                 <svg>
                   <use xlinkHref="img/icons.svg#icon-credit-card"></use>
                 </svg>
                 Billing
-              </a>
+              </Link>
             </li>
           </ul>
     </nav>
