@@ -162,7 +162,7 @@ const SingleTour = () => {
 
             </section>
             <section className='section-map'>
-                <Map locations={tour?.locations} />
+                {/* <Map locations={tour?.locations} /> */}
             </section>
             <section className="section-reviews">
                 <div className="reviews">

@@ -1,11 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import BreadCrums from '../adminComponents/BreadCrums';
+import Header from '../adminComponents/Header';
+import SideNav from '../adminComponents/SideNav';
+import CreateTour from '../adminComponents/Tours/CreateTour';
+import ToursList from '../adminComponents/Tours/ToursList';
 
 const AdminLayout = () => {
-  return (
-    <div>
-      This is Admin
-    </div>
-  )
+    const [cssLoaded, setCssLoaded] = useState(false);
+
+    const LoadCss = async () => {
+        await import('./../../public/admin_assets/css/admin.css');
+        await import('./../../public//admin_assets/vendor/bootstrap-icons/bootstrap-icons.css');        
+        setCssLoaded(true)
+    }
+
+    useEffect(() => {
+        LoadCss()
+    }, []);
+
+    if (!cssLoaded) {
+        return ""
+    }
+    return (
+        <>
+            <Header />
+            <SideNav />
+            <main id="main" className="main">
+                <BreadCrums />
+            {/* <ToursList/> */}
+                <Routes>
+                    <Route path='/tours' element={<ToursList/>} />
+                    <Route path='/tours/create' element={<CreateTour/>} />
+                </Routes>
+            </main>
+
+        </>
+    )
 }
 
 export default AdminLayout

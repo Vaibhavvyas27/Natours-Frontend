@@ -1,15 +1,13 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from 'react-router-dom'
 import Footer from './../components/Footer'
 import Header from './../components/Header'
 import Home from './../components/Home'
 import Login from './../components/Auth/Login'
 import SignUp from './../components/Auth/SignUp'
 import Profile from './../components/Profile/Profile'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import './../../public/css/style.css'
 import PrivateRoute from './../components/PrivateRoute'
 import AuthCheck from './../components/Auth/AuthCheck'
 import SingleTour from './../components/SingleTour/SingleTour'
@@ -22,15 +20,18 @@ import MyReviews from './../components/myReviews/MyReviews'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import "./AppLayout.css";
+import ToursList from '../adminComponents/Tours/ToursList';
 
 
 
 const AppLayout = () => {
     const [cssLoaded, setCssLoaded] = useState(false);
-    const LoadCss = async()=>{
+
+    const LoadCss = async () => {
         await import('./../../public/css/style.css');
         setCssLoaded(true)
     }
+
     useEffect(() => {
         LoadCss()
     }, []);

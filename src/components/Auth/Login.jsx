@@ -100,7 +100,7 @@ const Login = () => {
           <div className="form__group d-flex gap-3">
             <button disabled={loading} className="btn btn--green">{loading ? 'Loading...' : 'Login'}</button>
           </div>
-          <h2 className='text'>Forget Password? <Link to={'/forget-password'}> click here  </Link></h2>
+          <h4 className='text'>Forget Password? <Link to={'/forget-password'}> click here  </Link></h4>
         </form>
       </div>
     </main>

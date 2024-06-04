@@ -22,7 +22,7 @@ const ProfileUpadete = () => {
       ...formData,
       [name]: value,
     });
-    console.log(formData)
+    // console.log(formData)
   };
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,6 +31,7 @@ const ProfileUpadete = () => {
     NewformData.append('file', img); 
     NewformData.append('name', formData.name); 
     NewformData.append('email', formData.email); 
+    console.log(NewformData)
     try {
       const res = await fetch(`${url}api/v1/users/update-me`, {
         method: 'PATCH',
