@@ -50,6 +50,7 @@ const ToursList = () => {
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Ratings / 5</th>
                                                 <th scope="col">Start Date</th>
+                                                <th scope="col">Actions</th>
                                                 {/* <th scope="col">Sold</th>
                                                 <th scope="col">Revenue</th> */}
                                             </tr>
@@ -67,6 +68,7 @@ const ToursList = () => {
                                                         <td>$ {tour.price}</td>
                                                         <td>{tour.ratingsAverage}</td>
                                                         <td>{formattedDate(tour.startDates[0])}</td>
+                                                        <td><Link to={'./edit/'+tour.slug}>Edit</Link></td>
                                                         {/* <td className="fw-bold">124</td> */}
                                                         {/* <td>$5,828</td> */}
                                                     </tr>

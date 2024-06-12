@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import {Icon} from 'leaflet'
 
 const Map = ({ locations }) => {
-  console.log(locations)
+  // console.log(locations)
   const customIcon = new Icon({
     iconUrl:'https://cdn-icons-png.flaticon.com/128/684/684908.png',
     iconSize:[40,38]
@@ -22,7 +22,7 @@ const Map = ({ locations }) => {
                   <p>{place.coordinates}</p>
                   <Marker icon={customIcon} position={i==0 ? place.coordinates : place.coordinates.reverse() } >
                   <Popup>
-                    <h4 className='text-small'><i><u>Day : {place.day}</u></i></h4>
+                    <h5 className='text-small'><i><u>Day : {place.day}</u></i></h5>
                     <br />
                     <h2 className='custom_map_popup_text'>{place.description}</h2>
                   </Popup>

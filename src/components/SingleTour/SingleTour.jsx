@@ -68,11 +68,11 @@ const SingleTour = () => {
             <section className="section-header">
                 <div className="header__hero">
                     <div className="header__hero-overlay">&nbsp;</div>
-                    <img className="header__hero-img" src={url+"/img/tours/" + tour?.imageCover} alt="Tour 5" />
+                    <img className="header__hero-img" src={url + "/img/tours/" + tour?.imageCover} alt="Tour 5" />
                 </div>
 
                 <div className="heading-box">
-                    <h1 className="heading-primary" style={{lineHeight:'1.6'}}>
+                    <h1 className="heading-primary" style={{ lineHeight: '1.6' }}>
                         <span>{tour?.name} Tour</span>
                     </h1>
                     <div className="heading-box__group">
@@ -155,25 +155,39 @@ const SingleTour = () => {
                 {
                     tour?.images?.map((image, i) => (
                         <div key={i} className="picture-box">
-                            <img className={"picture-box__img picture-box__img--" + (i + 1)} src={url+"/img/tours/" + image} alt="The Park Camper Tour 1" />
+                            <img className={"picture-box__img picture-box__img--" + (i + 1)} src={url + "/img/tours/" + image} alt="The Park Camper Tour 1" />
                         </div>
                     ))
                 }
 
             </section>
-            <section className='section-map'>
-                {/* <Map locations={tour?.locations} /> */}
-            </section>
-            <section className="section-reviews">
-                <div className="reviews">
-                    {
-                        reviews?.map((review) => (
-                            <ReviewCard review={review} key={review._id} />
-                        ))
-                    }
 
-                </div>
-            </section>
+            {
+                tour?.locations?.length != 0 ? (
+                    <section className='section-map'>
+                        <Map locations={tour?.locations} />
+                    </section>
+                ) : (
+                    ''
+                )
+            }
+
+            {
+                reviews?.length != 0 ? (
+                    <section className="section-reviews">
+                        <div className="reviews">
+                            {
+                                reviews?.map((review) => (
+                                    <ReviewCard review={review} key={review._id} />
+                                ))
+                            }
+                        </div>
+                    </section>
+                ) : (
+                    ''
+                )
+            }
+
             <Booking tour={tour} />
 
 

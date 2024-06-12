@@ -5,7 +5,10 @@ import BreadCrums from '../adminComponents/BreadCrums';
 import Header from '../adminComponents/Header';
 import SideNav from '../adminComponents/SideNav';
 import CreateTour from '../adminComponents/Tours/CreateTour';
+import DynamicAccordions from '../adminComponents/Tours/AdMap';
+import EditTour from '../adminComponents/Tours/EditTour';
 import ToursList from '../adminComponents/Tours/ToursList';
+import AdMap from '../adminComponents/Tours/AdMap';
 
 const AdminLayout = () => {
     const [cssLoaded, setCssLoaded] = useState(false);
@@ -33,6 +36,8 @@ const AdminLayout = () => {
                 <Routes>
                     <Route path='/tours' element={<ToursList/>} />
                     <Route path='/tours/create' element={<CreateTour/>} />
+                    <Route path='/tours/edit/:tourSlug' element={<EditTour />} />
+                    <Route path='/admap' element={<AdMap />} />
                 </Routes>
             </main>
 
