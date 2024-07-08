@@ -60,7 +60,7 @@ const EditReviewModal = ({ review, setReviewFlag, reviewFlag }) => {
     }
     return (
         <>
-            <h3 className='' onClick={handleShow} style={editIconStyle}><FaEdit /></h3>
+            <h5 className='' onClick={handleShow} style={editIconStyle}><FaEdit /></h5>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>

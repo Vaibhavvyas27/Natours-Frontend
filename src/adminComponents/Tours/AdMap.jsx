@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaf
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useEffect } from 'react';
 
-const MapWithLocationList = ({ setLocationArr }) => {
+const MapWithLocationList = ({ setLocationArr, resetSignal, currentTour }) => {
   const [locations, setLocations] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [newLocation, setNewLocation] = useState({ coordinates: [], description: '', day: '' });
@@ -15,6 +15,10 @@ const MapWithLocationList = ({ setLocationArr }) => {
     updatedLocations.splice(index, 1);
     setLocations(updatedLocations);
   };
+
+  useEffect(() => {
+    setLocations([])
+  }, [resetSignal])
 
   const AddMarkerToClickLocation = () => {
     const map = useMapEvents({
@@ -40,6 +44,10 @@ const MapWithLocationList = ({ setLocationArr }) => {
   useEffect(() => {
     setLocationArr(locations)
   }, [locations])
+
+  useEffect(() => {
+    setLocations(currentTour?.locations? currentTour?.locations : [] )
+  }, [currentTour])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -68,7 +76,7 @@ const MapWithLocationList = ({ setLocationArr }) => {
           <div>
             <MapContainer center={[51.505, -0.09]} zoom={5} style={{ height: '400px', width: '100%' }}>
               <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=u5O3I0YdUkYNtUNo2Yy8"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
               <AddMarkerToClickLocation />

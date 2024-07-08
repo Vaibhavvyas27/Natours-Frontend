@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import Booking from './Booking'
 import Map from './Map'
 import ReviewCard from './ReviewCard'
@@ -12,6 +12,7 @@ const SingleTour = () => {
     const { slug } = useParams()
     const [tour, setTour] = useState(null)
     const [reviews, setReviews] = useState(null)
+    const navigate = useNavigate()
     useEffect(() => {
         fetchSingleTour()
     }, [slug])
@@ -23,8 +24,10 @@ const SingleTour = () => {
             })
 
             const { data } = await res.json()
+            if (data.data.length == 0) {
+                navigate('/tour')
+            }
             setTour(data.data[0])
-            // console.log(data.data[0])
         } catch (error) {
             console.log(error)
         }
@@ -55,12 +58,27 @@ const SingleTour = () => {
             fethcReview()
         }
     }, [tour])
+
     const dateConverter = (date) => {
         const dateObject = new Date(date);
+        if( dateObject == 'Invalid Date'){
+            return "Date is not Declared"
+        }
         const month = dateObject.toLocaleString('default', { month: 'long' });
         const year = dateObject.getFullYear();
         const formattedDate = `${month} ${year}`;
         return formattedDate
+    }
+
+    let earliestDate
+    if (tour != null) {
+        const dates = tour?.startDates
+        const today = new Date();
+        const futureDates = dates?.filter(date => date >= today.toISOString());
+
+        //  ascending order date sorting 
+        futureDates?.sort((a, b) => new Date(a) - new Date(b));
+        earliestDate = futureDates?.length > 0 ? futureDates[0] : 'No future dates';
     }
 
     return (
@@ -102,7 +120,7 @@ const SingleTour = () => {
                                     <use xlinkHref="/img/icons.svg#icon-calendar"></use>
                                 </svg>
                                 <span className="overview-box__label">Next date</span>
-                                <span className="overview-box__text">{dateConverter(tour?.startDates[0])}</span>
+                                <span className="overview-box__text">{dateConverter(earliestDate)}</span>
                             </div>
                             <div className="overview-box__detail">
                                 <svg className="overview-box__icon">

@@ -23,7 +23,7 @@ const Booking = ({ tour }) => {
             })
 
             const { booking } = await res.json()
-            console.log(booking)
+            // console.log(booking)
             setBookings(booking)
         } catch (error) {
             console.log(error)

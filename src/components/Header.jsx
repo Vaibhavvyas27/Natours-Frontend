@@ -10,9 +10,9 @@ function Header() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { currentUser } = useSelector(state => state.user)
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     try {
-      await fetch(`${url}api/v1/users/logout`,{
+      await fetch(`${url}api/v1/users/logout`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -29,26 +29,33 @@ function Header() {
   return (
     <header className="header">
       <nav className="nav nav--tours">
-        <NavLink  to="/" className="nav__el">All tours</NavLink>
-        {currentUser?
+        <NavLink to="/" className="nav__el">All tours</NavLink>
+        {currentUser ?
           <>
-            <NavLink  to="/my-bookings" className="nav__el">My Bookings</NavLink>
-            <NavLink  to="/wishlist" className="nav__el">Wishlist</NavLink>
+            <NavLink to="/my-bookings" className="nav__el">My Bookings</NavLink>
+            <NavLink to="/wishlist" className="nav__el">Wishlist</NavLink>
           </>
           :
           ""
         }
-        
+
       </nav>
       <div className="header__logo">
         <img src="/img/logo-white.png" alt="Natours logo" />
       </div>
       <nav className="nav nav--user">
+        {currentUser && currentUser.role == 'admin' ?
+          <>
+            <a href="/admin/dashboard" className="nav__el">Admin Panel</a>
+          </>
+          :
+          ""
+        }
         {currentUser ? (
           <>
             <span onClick={handleLogout} href="/" className="nav__el nav__el--logout">Log out</span>
             <Link to="/profile" className="nav__el">
-              <img src={currentUser.photo? currentUser.photo : '/img/users/default.jpg' } alt={`Photo of ${currentUser.name}`} className="nav__user-img" />
+              <img src={currentUser.photo ? currentUser.photo : '/img/users/default.jpg'} alt={`Photo of ${currentUser.name}`} className="nav__user-img" />
               <span>{currentUser.name.split(' ')[0]}</span>
             </Link>
           </>

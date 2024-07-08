@@ -712,6 +712,7 @@ h6 {
   background: #f6f9ff;
   padding: 10px 15px;
   border-radius: 4px;
+  text-decoration: none;
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -724,6 +725,9 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover i {
+  color: #4154f1;
+}
+.sidebar-nav .nav-link.active i {
   color: #4154f1;
 }
 

@@ -5,8 +5,12 @@ import {Icon} from 'leaflet'
 const Map = ({ locations }) => {
   // console.log(locations)
   const customIcon = new Icon({
-    iconUrl:'https://cdn-icons-png.flaticon.com/128/684/684908.png',
-    iconSize:[40,38]
+    iconUrl:'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
   })
   return (
     <div id='map'>
@@ -22,9 +26,9 @@ const Map = ({ locations }) => {
                   <p>{place.coordinates}</p>
                   <Marker icon={customIcon} position={i==0 ? place.coordinates : place.coordinates.reverse() } >
                   <Popup>
-                    <h5 className='text-small'><i><u>Day : {place.day}</u></i></h5>
+                    <h6 className='text-small'><i><u>Day : {place.day}</u></i></h6>
                     <br />
-                    <h2 className='custom_map_popup_text'>{place.description}</h2>
+                    <h2 className='custom_map_popup_text' style={{lineHeight:'25px'}}>{place.description}</h2>
                   </Popup>
                   </Marker>
                 </div>
