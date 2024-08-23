@@ -36,6 +36,7 @@ const ProfileUpadete = () => {
       // const csrfTokenResponse = await fetch(`${url}csrf-token`, { credentials: 'include' });
       // const csrfToken = await csrfTokenResponse.json();
       // console.log(csrfToken)
+      
       const res = await fetch(`${url}api/v1/users/update-me`, {
         method: 'PATCH',
         // headers: {
