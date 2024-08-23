@@ -17,7 +17,7 @@ function Header() {
         headers: {
           'Content-Type': 'application/json',
         },
-        // credentials: 'include',
+        credentials: 'include',
       })
       toast.success('Log out SucessFully !!')
       dispatch(signOut())

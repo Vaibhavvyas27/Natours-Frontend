@@ -11,6 +11,7 @@ const TourCard = ({ tour, wishlist, setFlag, flag }) => {
     const month = dateObject.toLocaleString('default', { month: 'long' });
     const year = dateObject.getFullYear();
     const formattedDate = `${month} ${year}`;
+    console.log(wishlist)
 
     const addToWishlist = async() => {
       try {

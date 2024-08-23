@@ -11,9 +11,7 @@ const CreateTour = () => {
         <div className="card">
             <div className="card-body">
                 <h5 className="card-title">Tour Basic Details</h5>
-
                 <TourForm />
-                
             </div>
         </div>
 

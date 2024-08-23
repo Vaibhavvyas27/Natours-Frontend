@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { signOut } from '../../redux/user/userSlice'
 
 const AdminCheck = ({restrictTo}) => {
     const url = import.meta.env.VITE_APIURL
-    console.log('Admin Check : ', restrictTo)
+    const { currentUser } = useSelector(state => state.user)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const handleAccess = async() => {
         const jsonData = {
             restrictTo : restrictTo
         }
         try {
+            console.log("done")
             const res = await fetch(`${url}api/v1/users/access-check`, {
                 method: 'POST',
                 headers: {
@@ -21,9 +23,11 @@ const AdminCheck = ({restrictTo}) => {
                 body:JSON.stringify(jsonData)
             })
 
-            const data = await res.json()
+            // const data = await res.json()
+            // console.log("data : ", data)
+            console.log("res : ", res)
             if(!res.ok){
-                dispatch(signOut())
+                navigate('/')
             }
         } catch (error) {
             console.log(error)
@@ -32,6 +36,9 @@ const AdminCheck = ({restrictTo}) => {
     }
 
     useEffect(()=>{
+        if (!restrictTo.includes(currentUser.role)) {
+            navigate("/")
+        }
         handleAccess()
     },[])
   return (

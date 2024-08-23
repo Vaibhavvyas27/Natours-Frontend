@@ -1,8 +1,9 @@
 import React from 'react'
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ToursDownload from './ToursDownload';
 
-const TourSort = ({setTours}) => {
+const TourSort = ({setTours,tours}) => {
     const sortRef = useRef(null)
     const priceFileterRef = useRef(null)
     const url = import.meta.env.VITE_APIURL
@@ -56,9 +57,11 @@ const TourSort = ({setTours}) => {
             </div>
             <div className='col-md-5 my-2'>
                 
-                <div className="d-flex justify-content-end align-items-center">
+                <div className="d-flex justify-content-end gap-1 align-items-center">
                     <Link to={'./create'} className="btn btn-success py-2"><i className="bi bi-plus-circle"> </i> Create Tour</Link>
+                    <ToursDownload tours={tours} />
                 </div>
+                
             </div>
             
         </div>

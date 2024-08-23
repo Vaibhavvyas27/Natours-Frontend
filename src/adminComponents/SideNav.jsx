@@ -9,7 +9,7 @@ const SideNav = () => {
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">
           <NavLink className="nav-link collapsed" to="./dashboard">
-            <i className="bi bi-grid"></i>
+            <i className="bi bi-ui-radios-grid"></i>
             <span>Dashboard</span>
           </NavLink>
         </li>
@@ -17,6 +17,12 @@ const SideNav = () => {
           <NavLink className="nav-link collapsed" to="./tours">
             <i className="bi bi-luggage-fill"></i>
             <span>Tours</span>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link collapsed" to="./users">
+            <i className="bi bi-people-fill"></i>
+            <span>Users</span>
           </NavLink>
         </li>
       </ul>

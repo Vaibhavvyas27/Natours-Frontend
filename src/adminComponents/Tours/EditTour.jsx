@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import TourForm from './TourForm'
 
 const EditTour = () => {
@@ -9,6 +9,7 @@ const EditTour = () => {
     const url = import.meta.env.VITE_APIURL
     const {tourSlug} = useParams()
     const [tour, setTour] = useState(null)
+    const navigate = useNavigate()
     useEffect(() => {
         fetchSingleTour()
     }, [])
@@ -21,6 +22,12 @@ const EditTour = () => {
             })
 
             const { data } = await res.json()
+            if (data.data.length == 0) {
+                navigate('/404')
+            }
+            else{
+                console.log("Not yet")
+            }
             setTour(data.data[0])
             // console.log(data.data[0])
         } catch (error) {
@@ -32,9 +39,7 @@ const EditTour = () => {
       <div className="card">
             <div className="card-body">
                 <h5 className="card-title">Tour Basic Details</h5>
-
                 <TourForm currentTour={tour}/>
-                
             </div>
         </div>
     </>

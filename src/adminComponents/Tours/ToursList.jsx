@@ -61,7 +61,7 @@ const ToursList = () => {
     console.log(tours)
     return (
         <section className="section dashboard">
-            <TourSort setTours={setTours} />
+            <TourSort setTours={setTours} tours={tours} />
             <div className="row">
                 <div className="col-lg-10">
                     <div className="row">
@@ -96,7 +96,7 @@ const ToursList = () => {
                                                         <td>{tour.ratingsAverage}</td>
                                                         <td>{formattedDate(tour.startDates[0])}</td>
                                                         <td><Link to={'./edit/'+tour.slug}>Edit</Link></td>
-                                                        <td><Link onClick={()=> handleDelete(tour)}>Deletet</Link></td>
+                                                        <td><Link onClick={()=> handleDelete(tour)}>Delete</Link></td>
                                                         {/* <td className="fw-bold">124</td> */}
                                                         {/* <td>$5,828</td> */}
                                                     </tr>

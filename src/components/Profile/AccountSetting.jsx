@@ -33,10 +33,13 @@ const ProfileUpadete = () => {
     NewformData.append('email', formData.email); 
     console.log(NewformData)
     try {
+      // const csrfTokenResponse = await fetch(`${url}csrf-token`, { credentials: 'include' });
+      // const csrfToken = await csrfTokenResponse.json();
+      // console.log(csrfToken)
       const res = await fetch(`${url}api/v1/users/update-me`, {
         method: 'PATCH',
         // headers: {
-        //   'Content-Type': 'application/json',
+        //   'CSRF-Token': csrfToken.csrfToken, // Add the token to headers
         // },
         credentials: 'include',
         body: NewformData

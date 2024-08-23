@@ -13,6 +13,7 @@ import AuthCheck from '../components/Auth/AuthCheck';
 import Dashboard from '../adminComponents/Dashboard';
 import Page404 from '../components/404Page';
 import AdminCheck from '../adminComponents/Auth/AdminCheck';
+import UsersList from '../adminComponents/Users/UsersList';
 
 const AdminLayout = () => {
     const [cssLoaded, setCssLoaded] = useState(false);
@@ -47,6 +48,7 @@ const AdminLayout = () => {
                         <Route element={<AdminCheck restrictTo={['admin']} />}>
                             <Route path='/dashboard' element={<Dashboard />} />
                             <Route path='/tours' element={<ToursList />} />
+                            <Route path='/users' element={<UsersList />} />
                             <Route path='/tours/create' element={<CreateTour />} />
                             <Route path='/tours/edit/:tourSlug' element={<EditTour />} />
                             <Route path='/admap' element={<AdMap />} />
