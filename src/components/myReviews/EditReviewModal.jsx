@@ -60,7 +60,7 @@ const EditReviewModal = ({ review, setReviewFlag, reviewFlag }) => {
     }
     return (
         <>
-            <h3 className='' onClick={handleShow} style={editIconStyle}><FaEdit /></h3>
+            <h5 className='' onClick={handleShow} style={editIconStyle}><FaEdit /></h5>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>
@@ -70,7 +70,7 @@ const EditReviewModal = ({ review, setReviewFlag, reviewFlag }) => {
                 <form className="form p-5" onSubmit={handleSubmit} >
                     <Modal.Body>
                         <div className="form__group">
-                            <h2 className='fw-bold'>Tour : {review.tour.name}</h2>
+                            <h4 className='fw-bold'>Tour : {review.tour.name}</h4>
                         </div>
 
                         <div className="form__group">

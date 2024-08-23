@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='*' element={<AppLayout />}></Route>
-          <Route path='/admin' element={<AdminLayout />}></Route>
+          <Route path='/admin/*' element={<AdminLayout />}></Route>
         </Routes>
       </BrowserRouter>
       <ToastContainer />
